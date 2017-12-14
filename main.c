@@ -1,7 +1,6 @@
 #include "I2C_Header.h"
 
 void main(void) {
-    //    uint8_t toTransmit[EEPROM_PAGE_SIZE], result[0x10];
     //0x00 <= byteAddress <= 0x3FF
     //0x3FF = 1023
     ADDRESS myAddress;
@@ -12,22 +11,22 @@ void main(void) {
     //    setupLED();
 
     while (1) {
-        concatenateReceiveArray();
+        concatenateReceiveArray(); //UART->WAITS FOR VALID INPUT->INTERRUPT TRIGGERED
         if (buildAddress) {
             switch (currentSection++) {
-                case NAME:
+                case NAME: //ADD NAME TO ADDRESS
                     setName(&myAddress, receivedArray, inputSize);
                     inputSize = 0;
                     break;
-                case TELEPHONE:
+                case TELEPHONE: //ADD TELEPHONE TO ADDRESS
                     setTelephone(&myAddress, receivedArray, inputSize);
                     inputSize = 0;
                     break;
-                case STREET:
+                case STREET: //ADD STREET TO ADDRESS
                     setStreet(&myAddress, receivedArray, inputSize);
                     inputSize = 0;
                     break;
-                case CITY:
+                case CITY: //ADD CITY TO ADDRESS
                     setCity(&myAddress, receivedArray, inputSize);
                     inputSize = 0;
                     currentSection = NAME;
@@ -35,13 +34,13 @@ void main(void) {
             }
             buildAddress = false;
 
-            if (startI2CTransmission) {
+            if (startI2CTransmission) { //WRITING ADDRESS ON THE EEPROM
                 writeAddress(&myAddress, DEVICE_ADDRESS, userToByteAddress(addressNumber));
                 startI2CTransmission = false;
             }
         } else if (startI2CReception) {
-            readAddress(&receiveAddress, DEVICE_ADDRESS, userToByteAddress(addressNumber)); //I2C
-            transmitAddress(&receiveAddress); //UART
+            readAddress(&receiveAddress, DEVICE_ADDRESS, userToByteAddress(addressNumber)); //READ ADDRESS FROM EEPROM->I2C
+            transmitAddress(&receiveAddress); //PRINT ADDRESS ON TERMINAL->UART
             startI2CReception = false;
         }
     }

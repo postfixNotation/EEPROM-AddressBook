@@ -120,23 +120,23 @@ inline void concatenateReceiveArray(void) {
                 index = 0;
             }
             bodyDataReached = true;
-        } else if ((5 == receivedDataISR) && completeHeader) {
+        } else if ((5 == receivedDataISR) && completeHeader) { //ASCII->ENQUIRY
             startI2CReception = true;
             completeHeader = false;
-        } else if ((4 == receivedDataISR) && bodyDataReached) {
+        } else if ((4 == receivedDataISR) && bodyDataReached) { //ASCII->END OF TRANSMISSION
             index = 0;
             buildAddress = true;
             startI2CTransmission = true;
             receiveBody = false;
             completeHeader = false;
             bodyDataReached = false;
-        } else if ((3 == receivedDataISR) && bodyDataReached) {
+        } else if ((3 == receivedDataISR) && bodyDataReached) { //ASCII->END OF TEXT
             index = 0;
             buildAddress = true;
             bodyDataReached = false;
-        } else if ((2 == receivedDataISR) && completeHeader) {
+        } else if ((2 == receivedDataISR) && completeHeader) { //ASCII->START OF TEXT
             receiveBody = true;
-        } else if ((1 == receivedDataISR) && !completeHeader && !receiveHeader) {
+        } else if ((1 == receivedDataISR) && !completeHeader && !receiveHeader) { //ASCII->START OF HEADING
             receiveHeader = true;
         } else if (receiveHeader && !completeHeader) {
 

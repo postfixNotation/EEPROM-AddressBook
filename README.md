@@ -46,5 +46,5 @@ The procedure is aquivalent to creating new users/addresses. So open a terminal 
 This formatting is achieved by activating "Newline at LF" (LF = line feed) and unchecking "Show newline characters".
 ***
 ## Datasheets
-[Microchip Microcontroller PIC16LF15345](http://ww1.microchip.com/downloads/en/DeviceDoc/40001865B.pdf)
-[STMicroelectronics EEPROM M24C08](http://www.st.com/content/ccc/resource/technical/document/datasheet/cc/f5/a5/01/6f/4b/47/d2/DM00070057.pdf/files/DM00070057.pdf/jcr:content/translations/en.DM00070057.pdf)
+* [Microchip Microcontroller PIC16LF15345](http://ww1.microchip.com/downloads/en/DeviceDoc/40001865B.pdf)
+* [STMicroelectronics EEPROM M24C08](http://www.st.com/content/ccc/resource/technical/document/datasheet/cc/f5/a5/01/6f/4b/47/d2/DM00070057.pdf/files/DM00070057.pdf/jcr:content/translations/en.DM00070057.pdf)
