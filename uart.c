@@ -1,4 +1,4 @@
-#include "I2C_Header.h"
+#include "declarations.h"
 
 void uart_setup(void) {
     //DIGITAL I/O

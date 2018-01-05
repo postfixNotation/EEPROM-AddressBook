@@ -1,4 +1,4 @@
-#include "I2C_Header.h"
+#include "declarations.h"
 
 void setTelephone(ADDRESS *address, char* telephone, uint8_t length) {
     for (uint8_t i = 0; i < length; i++) {

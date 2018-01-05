@@ -1,4 +1,4 @@
-#include "I2C_Header.h"
+#include "declarations.h"
 
 //INTERRUPT SERVICE ROUTINE
 

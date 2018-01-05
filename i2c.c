@@ -1,4 +1,4 @@
-#include "I2C_Header.h"
+#include "declarations.h"
 
 void i2c_setup(void) {
     LATC = 0x00; //PORTC DATA LATCH REGISTER
